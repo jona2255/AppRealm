@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navegacion"
+    app:startDestination="@id/listaCancionesFragment">
+
+    <fragment
+        android:id="@+id/listaCancionesFragment"
+        android:name="com.example.apprealm.View.ListaCancionesFragment"
+        android:label="fragment_lista_canciones"
+        tools:layout="@layout/fragment_lista_canciones" />
+    <fragment
+        android:id="@+id/nuevaCancionFragment"
+        android:name="com.example.apprealm.View.NuevaCancionFragment"
+        android:label="fragment_nueva_cancion"
+        tools:layout="@layout/fragment_nueva_cancion" />
+</navigation>
