@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.apprealm.Controller.CancionesViewModel;
+import com.example.apprealm.Controller.Migration;
 
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
@@ -19,7 +20,8 @@ public class MainActivity extends AppCompatActivity {
         Realm.init(this);
         RealmConfiguration configuration = new RealmConfiguration.Builder()
                 .name("canciones.realm")
-                .schemaVersion(0)
+                .schemaVersion(2)
+                .migration(new Migration())
                 .build();
         Realm.setDefaultConfiguration(configuration);
         setContentView(R.layout.activity_main);

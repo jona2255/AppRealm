@@ -26,7 +26,7 @@ public class NuevaCancionFragment extends Fragment {
     private CancionesViewModel cancionesViewModel;
     private NavController navController;
 
-    private EditText nombreEditText, artistaEditText;
+    private EditText nombreCompletoEditText;
     private Button addCancion;
     private TextView cancionTextView;
 
@@ -47,15 +47,13 @@ public class NuevaCancionFragment extends Fragment {
         cancionesViewModel = ViewModelProviders.of(requireActivity()).get(CancionesViewModel.class);
 
 
-        nombreEditText = view.findViewById(R.id.edittext_nombre);
-        artistaEditText = view.findViewById(R.id.edittext_artista);
+        nombreCompletoEditText = view.findViewById(R.id.edittext_nombre);
         addCancion = view.findViewById(R.id.button_crearCancion);
         cancionTextView = view.findViewById(R.id.textview_canciontitle);
 
         if (cancionesViewModel.isUserEditing) {
             cancionSelecionada = cancionesViewModel.obtenerCancionDetallePorId(cancionesViewModel.userToEditId);
-            nombreEditText.setText(cancionSelecionada.getNombre());
-            artistaEditText.setText(cancionSelecionada.getArtista());
+            nombreCompletoEditText.setText(cancionSelecionada.getNombreCompleto());
             addCancion.setText("Editar Canción");
             cancionTextView.setText("Editar Canción");
         }
@@ -67,18 +65,18 @@ public class NuevaCancionFragment extends Fragment {
         view.findViewById(R.id.button_crearCancion).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(nombreEditText.getText().toString().isEmpty() || artistaEditText.getText().toString().isEmpty()){
-                    nombreEditText.setError("Introduzca valores en los campos");
+                if(nombreCompletoEditText.getText().toString().isEmpty()){
+                    nombreCompletoEditText.setError("Introduzca valores en los campos");
                     return;
                 }
                 if (cancionesViewModel.isUserEditing) {
-                    Cancion cancion = new Cancion(nombreEditText.getText().toString(), artistaEditText.getText().toString());
+                    Cancion cancion = new Cancion(nombreCompletoEditText.getText().toString());
                     cancionesViewModel.actualizarCancion(cancionesViewModel.userToEditId, cancion);
                     cancionSelecionada = null;
                     cancionesViewModel.isUserEditing = false;
                     cancionesViewModel.userToEditId = 0;
                 }
-                else cancionesViewModel.insertarCancion(new Cancion(nombreEditText.getText().toString(), artistaEditText.getText().toString()));
+                else cancionesViewModel.insertarCancion(new Cancion(nombreCompletoEditText.getText().toString()));
                 navController.popBackStack();
             }
         });

@@ -26,7 +26,7 @@ public class CancionesViewModel extends AndroidViewModel {
     }
 
     public RealmResults<Cancion> obtenerCancionesDetallePorNombre(String criteria){
-        return realm.where(Cancion.class).contains("nombre", criteria).or().contains("artista", criteria).findAll();
+        return realm.where(Cancion.class).contains("nombreCompleto", criteria).findAll();
     }
 
     public Cancion obtenerCancionDetallePorId(int id){
@@ -40,8 +40,7 @@ public class CancionesViewModel extends AndroidViewModel {
                 Number maxId = obtenerCancionesDetalle().max("id");
                 int nextId = (maxId == null) ? 1 : maxId.intValue() + 1;
                 Cancion cancionTmp = realm.createObject(Cancion.class, nextId);
-                cancionTmp.setNombre(cancion.getNombre());
-                cancionTmp.setArtista(cancion.getArtista());
+                cancionTmp.setNombreCompleto(cancion.getNombreCompleto());
                 realm.insertOrUpdate(cancionTmp);
             }
         });
@@ -52,9 +51,7 @@ public class CancionesViewModel extends AndroidViewModel {
             @Override
             public void execute(Realm realm) {
                 Cancion cancionEditar = obtenerCancionDetallePorId(id);
-                cancionEditar.setNombre(cancion.getNombre());
-                cancionEditar.setArtista(cancion.getArtista());
-
+                cancionEditar.setNombreCompleto(cancion.getNombreCompleto());
             }
         });
     }

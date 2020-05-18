@@ -23,15 +23,6 @@
             android:textAllCaps="true"
             android:textStyle="bold"
             />
-        <TextView
-            android:id="@+id/textview_artista"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="10"
-            android:textColorHint="@color/blanco"
-            android:textColor="@color/blanco"
-            android:textAlignment="center"
-            />
 
     </LinearLayout>
 

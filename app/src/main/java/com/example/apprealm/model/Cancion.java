@@ -2,22 +2,21 @@ package com.example.apprealm.model;
 
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
+import io.realm.annotations.Required;
 
 
 public class Cancion extends RealmObject {
     @PrimaryKey()
     int id;
+    @Required
+    String nombreCompleto;
 
-    String nombre;
-    String artista;
+    public Cancion(String nombreCompleto) {
+        this.nombreCompleto = nombreCompleto;
+    }
 
     public Cancion(){
 
-    }
-
-    public Cancion(String nombre, String artista) {
-        this.nombre = nombre;
-        this.artista = artista;
     }
 
     public int getId() {
@@ -28,19 +27,11 @@ public class Cancion extends RealmObject {
         this.id = id;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getNombreCompleto() {
+        return nombreCompleto;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getArtista() {
-        return artista;
-    }
-
-    public void setArtista(String artista) {
-        this.artista = artista;
+    public void setNombreCompleto(String nombreCompleto) {
+        this.nombreCompleto = nombreCompleto;
     }
 }

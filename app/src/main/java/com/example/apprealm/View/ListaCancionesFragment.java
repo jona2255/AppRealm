@@ -100,8 +100,7 @@ public class ListaCancionesFragment extends Fragment {
         public void onBindViewHolder(@NonNull CancionViewHolder holder, int position) {
             final Cancion cancion = cancionDetalleList.get(position);
             Log.i("Logger", String.valueOf(cancion.getId()));
-            holder.nombreTextView.setText(cancion.getNombre());
-            holder.artsitaTextView.setText(cancion.getArtista());
+            holder.nombreCompletoTextView.setText(cancion.getNombreCompleto());
 
             holder.eliminarImageView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -132,13 +131,12 @@ public class ListaCancionesFragment extends Fragment {
         }
 
         class CancionViewHolder extends RecyclerView.ViewHolder {
-            TextView nombreTextView, artsitaTextView;
+            TextView nombreCompletoTextView;
             ImageView editarImageView, eliminarImageView;
 
             CancionViewHolder(@NonNull View itemView) {
                 super(itemView);
-                nombreTextView = itemView.findViewById(R.id.textview_nombre);
-                artsitaTextView = itemView.findViewById(R.id.textview_artista);
+                nombreCompletoTextView = itemView.findViewById(R.id.textview_nombre);
                 editarImageView = itemView.findViewById(R.id.imageview_editar);
                 eliminarImageView = itemView.findViewById(R.id.imageview_eliminar);
             }

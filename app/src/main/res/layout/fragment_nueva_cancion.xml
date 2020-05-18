@@ -27,14 +27,6 @@
             android:hint="Nombre"
             android:textColorHint="#FFFFFF"
             android:textColor="@color/blanco"/>
-        <EditText
-            android:id="@+id/edittext_artista"
-            android:layout_width="match_parent"
-            android:layout_height="69dp"
-            android:hint="Artista"
-            android:textColorHint="#FFFFFF"
-            android:textColor="@color/blanco"/>
-
 
         <Button
             android:id="@+id/button_crearCancion"
